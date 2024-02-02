@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day Planner</title>
+</head>
+<body>
+    <header>
+        <h1>Day Planner</h1>
+        <p>
+            <strong>
+                This simple day planner lets you keep track of what you want to do today.
+            </strong>
+        </p>
+        <article>
+            <p>
+                The way it works is incredibly simple! Just write tasks in the form input below,
+                and hit enter or the "Add Task" button to add them to the list.
+                When you're done with a task, click the "Done" button to mark it as complete.
+            </p>
+            <p>
+                This service is entirely free and privacy centered. You don't even need an account,
+                and all data is stored locally on your device and never sent to any server.
+                Remember that if you clear your browser data your tasks may be lost.
+            </p>
+        </article>
+    </header>
+
+    <noscript>
+        <p>
+            This app requires JavaScript to work. Please enable it and refresh the page.
+        </p>
+    </noscript>
+
+    <main>
+        <h2>What do you want to get done today?</h2>
+        <form id="task-form">
+            <label for="task" class="sr-only">
+                Enter a task
+            </label>
+            <input type="text" id="task" placeholder="Write a task here..." required autofocus>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <ul id="task-list"></ul>
+
+        <template>
+            <li>
+                <label>
+                    <span class="sr-only">
+                        Mark as done
+                    </span>
+                    <input type="checkbox">
+                </label>
+                <span class="task-item"></span>
+                <button>Done</button>
+            </li>
+        </template>
+    </main>
+
+    <footer>
+        <p>
+            Built by Caen, (<a href="https://twitter.com/CodeWithCaen">Twitter</a>, <a href="https://github.com/caendesilva">GitHub</a>)
+        </p>
+
+        <small>
+            The source code is available on <a href="https://github.com/caendesilva/day-planner">GitHub</a>.
+            This tool does not save any of your data, and it has no backend.<br>
+            All data is stored locally on your device using Local Storage.
+        </small>
+    </footer>
+</body>
+</html>
