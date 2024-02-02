@@ -32,7 +32,8 @@
 
         form {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
         }
 
         label {
@@ -40,23 +41,20 @@
             font-weight: bold;
         }
 
-        input[type="text"],
-        input[type="submit"] {
-            margin-top: 5px;
+        input[type="text"] {
+            flex-grow: 1;
+            margin-right: 10px;
             margin-bottom: 5px;
             padding: 10px;
             font-size: 16px;
         }
 
-        input[type="text"] {
-            width: auto;
-        }
-
         input[type="submit"] {
-            margin-top: 15px;
             background-color: #3498db;
             color: #fff;
             cursor: pointer;
+            padding: 10px;
+            border: none;
         }
 
         input[type="submit"]:hover,
@@ -64,30 +62,6 @@
             background-color: #2980b9;
         }
 
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 16px 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer p {
-            margin-top: 4px;
-        }
-
-        small {
-            display: block;
-            margin-top: 10px;
-        }
-
-        a {
-            color: #3498db;
-        }
-
-        /* Additional Styles for Task List */
         ul#task-list {
             list-style: none;
             padding: 0;
@@ -119,6 +93,29 @@
         button:hover,
         button:focus {
             background-color: #2980b9;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 16px 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin-top: 4px;
+        }
+
+        small {
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #3498db;
         }
     </style>
 </head>
