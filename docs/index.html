@@ -138,11 +138,19 @@
             display: none;
         }
 
-        body.has-tasks #about {
+        #all-tasks-done {
+            display: none;
+        }
+
+        body.has-tasks #about, body.all-tasks-done #about {
             display: none;
         }
 
         body.has-tasks #task-heading {
+            display: block;
+        }
+
+        body.all-tasks-done #all-tasks-done {
             display: block;
         }
 
@@ -224,6 +232,8 @@
                 <button>Done</button>
             </li>
         </template>
+
+        <p id="all-tasks-done"><strong>Hooray!</strong> You've completed all your tasks for today! 🎉</p>
     </main>
 
     <footer>
@@ -310,6 +320,7 @@
                 // Remove class from body if there are no tasks
                 if (taskList.children.length === 0) {
                     document.body.classList.remove('has-tasks');
+                    document.body.classList.add('all-tasks-done')
                 }
 
                 // Save the tasks to local storage
@@ -355,6 +366,7 @@
             // Add class to body if there are tasks
             if (tasks.length > 0) {
                 document.body.classList.add('has-tasks');
+                document.body.classList.remove('all-tasks-done')
             }
         };
 
