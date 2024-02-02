@@ -225,6 +225,42 @@
     </footer>
 
     <script>
+        // Set placeholder to a random task
+        const taskPlaceholders = [
+            // Some basic tasks
+            'Call mom',
+            'Go for a walk',
+            'Read a book',
+            'Buy eggs',
+            'Do the laundry',
+            'Water the plants',
+            'Cook dinner',
+            'Write a letter',
+
+            // Some programming tasks
+            'Solve bug #123',
+            'Refactor the code',
+            'Write tests',
+            'Deploy to production',
+            'Add new feature',
+            'Optimize performance',
+            'Fix security issue',
+            'Write documentation',
+
+            // And some silly ones
+            'Conquer the world',
+            'Find the meaning of life',
+            'Build a time machine',
+            'Invent a new color',
+            'Learn to fly',
+            'Become a superhero',
+            'Find the treasure',
+            'Save the princess'
+        ];
+
+        const taskInput = document.getElementById('task');
+        taskInput.placeholder = taskPlaceholders[Math.floor(Math.random() * taskPlaceholders.length)];
+
         // Button to show the about section
         const showAboutButton = document.getElementById('show-about');
         showAboutButton.addEventListener('click', () => {
