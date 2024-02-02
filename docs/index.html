@@ -317,6 +317,12 @@
             if (event.target.tagName === 'BUTTON') {
                 const task = event.target.closest('li');
                 task.remove();
+                // Todo: Add to completed tasks in local storage?
+
+                // Remove class from body if there are no tasks
+                if (taskList.children.length === 0) {
+                    document.body.classList.remove('has-tasks');
+                }
 
                 // Save the tasks to local storage
                 saveTasks();
@@ -325,6 +331,8 @@
 
         // Load tasks from local storage
         const loadTasks = () => {
+            // Todo: Add date state so only today's tasks are shown
+
             const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
             const taskList = document.getElementById('task-list');
             const taskTemplate = document.querySelector('template').content;
@@ -336,6 +344,11 @@
                 const newTask = document.importNode(taskTemplate, true);
                 taskList.appendChild(newTask);
             });
+
+            // Add class to body if there are tasks
+            if (tasks.length > 0) {
+                document.body.classList.add('has-tasks');
+            }
         };
 
         // Save tasks to local storage
@@ -350,6 +363,11 @@
             });
 
             localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            // Add class to body if there are tasks
+            if (tasks.length > 0) {
+                document.body.classList.add('has-tasks');
+            }
         };
 
         // Load tasks when the page loads
