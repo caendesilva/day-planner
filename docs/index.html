@@ -134,7 +134,7 @@
             border: 0;
         }
 
-        #show-about, #task-heading {
+        #task-heading {
             display: none;
         }
 
@@ -142,15 +142,7 @@
             display: none;
         }
 
-        body.has-tasks #show-about {
-            display: block;
-        }
-
         body.has-tasks #task-heading {
-            display: block;
-        }
-
-        body.show-about #about {
             display: block;
         }
 
@@ -232,10 +224,6 @@
                 <button>Done</button>
             </li>
         </template>
-
-        <button id="show-about">
-            How does it work?
-        </button>
     </main>
 
     <footer>
@@ -246,7 +234,7 @@
         <small>
             The source code is available on <a href="https://github.com/caendesilva/day-planner">GitHub</a>.
             This tool does not save any of your data, and it has no backend.<br>
-            All data is stored locally on your device using Local Storage.
+            All data is stored locally on your device using Local Storage. <a href="javascript:showHelpModal();" id="show-about">Show help</a>
         </small>
     </footer>
 
@@ -373,11 +361,30 @@
         // Load tasks when the page loads
         loadTasks();
 
-        // Button to show the about section
-        const showAboutButton = document.getElementById('show-about');
-        showAboutButton.addEventListener('click', () => {
-            document.body.classList.toggle('show-about');
-        });
+        // Show help dialog modal with text from the about section
+        function showHelpModal() {
+            const aboutSection = document.getElementById('about');
+
+            // If browser supports dialog, use it
+            if (window.HTMLDialogElement) {
+                const dialog = document.createElement('dialog');
+                let innerHTML = aboutSection.innerHTML;
+                // Remove the divider
+                innerHTML = innerHTML.replace(/<div class="divider">.*?<\/div>/s, '');
+                // Change h4 to h2
+                innerHTML = innerHTML.replace(/<h4>/g, '<h2>').replace(/<\/h4>/g, '</h2>');
+                // Add close button
+                innerHTML += '<button onclick="this.parentElement.close();">Close</button>';
+
+                dialog.innerHTML = innerHTML;
+                dialog.style = 'width: 90%; max-width: 600px; margin: 20px auto;';
+                document.body.appendChild(dialog);
+                dialog.showModal();
+            } else {
+                // Otherwise, use alert with formatted text
+                alert(aboutSection.textContent.trim().split('\n').map((line) => line.trim()).join('\n').replace(/(?<!\n)\n(?!\n)/g, ' '));
+            }
+        }
     </script>
 </body>
 </html>
