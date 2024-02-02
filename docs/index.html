@@ -287,6 +287,74 @@
         const taskInput = document.getElementById('task');
         taskInput.placeholder = taskPlaceholders[Math.floor(Math.random() * taskPlaceholders.length)];
 
+        // Handle form submission to add a task to local storage
+        const taskForm = document.getElementById('task-form');
+        taskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const task = taskInput.value.trim();
+            if (task === '') {
+                return;
+            }
+
+            const taskList = document.getElementById('task-list');
+            const taskTemplate = document.querySelector('template').content.cloneNode(true);
+            const taskItem = taskTemplate.querySelector('.task-item');
+            taskItem.textContent = task;
+
+            taskList.appendChild(taskTemplate);
+
+            taskInput.value = '';
+            taskInput.focus();
+
+            // Save the tasks to local storage
+            saveTasks();
+        });
+
+        // Handle task completion
+        const taskList = document.getElementById('task-list');
+        taskList.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                const task = event.target.closest('li');
+                task.remove();
+
+                // Save the tasks to local storage
+                saveTasks();
+            }
+        });
+
+        // Load tasks from local storage
+        const loadTasks = () => {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskList = document.getElementById('task-list');
+            const taskTemplate = document.querySelector('template').content;
+
+            tasks.forEach((task) => {
+                const taskItem = taskTemplate.querySelector('.task-item');
+                taskItem.textContent = task;
+
+                const newTask = document.importNode(taskTemplate, true);
+                taskList.appendChild(newTask);
+            });
+        };
+
+        // Save tasks to local storage
+        const saveTasks = () => {
+            const tasks = [];
+            const taskList = document.getElementById('task-list');
+            const taskItems = taskList.querySelectorAll('li');
+
+            taskItems.forEach((task) => {
+                const taskItem = task.querySelector('.task-item');
+                tasks.push(taskItem.textContent);
+            });
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        };
+
+        // Load tasks when the page loads
+        loadTasks();
+
         // Button to show the about section
         const showAboutButton = document.getElementById('show-about');
         showAboutButton.addEventListener('click', () => {
