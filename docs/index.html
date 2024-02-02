@@ -70,10 +70,10 @@
             display: flex;
             align-items: center;
             margin-top: 10px;
-        }
-
-        label input[type="checkbox"] {
-            margin-right: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px 10px 10px 16px;
+            font-size: 16px;
         }
 
         span.task-item {
@@ -222,12 +222,6 @@
 
         <template>
             <li>
-                <label>
-                    <span class="sr-only">
-                        Mark as done
-                    </span>
-                    <input type="checkbox">
-                </label>
                 <span class="task-item"></span>
                 <button>Done</button>
             </li>
