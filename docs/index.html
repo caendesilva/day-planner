@@ -128,6 +128,26 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
+
+        #show-about, #task-heading {
+            display: none;
+        }
+
+        body.has-tasks #about {
+            display: none;
+        }
+
+        body.has-tasks #show-about {
+            display: block;
+        }
+
+        body.has-tasks #task-heading {
+            display: block;
+        }
+
+        body.show-about #about {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -138,18 +158,6 @@
                 This simple day planner lets you keep track of what you want to do today.
             </strong>
         </p>
-        <article>
-            <p>
-                The way it works is incredibly simple! Just write tasks in the form input below,
-                and hit enter or the "Add Task" button to add them to the list.
-                When you're done with a task, click the "Done" button to mark it as complete.
-            </p>
-            <p>
-                This service is entirely free and privacy centered. You don't even need an account,
-                and all data is stored locally on your device and never sent to any server.
-                Remember that if you clear your browser data your tasks may be lost.
-            </p>
-        </article>
     </header>
 
     <noscript>
@@ -168,6 +176,22 @@
             <button type="submit">Add Task</button>
         </form>
 
+        <article id="about">
+            <h4>How does it work?</h4>
+            <p>
+                The way it works is incredibly simple! Just write tasks in the form input above,
+                and hit enter or the "Add Task" button to add them to the list.
+                When you're done with a task, click the "Done" button to mark it as complete.
+            </p>
+            <p>
+                This service is entirely free and privacy centered. You don't even need an account,
+                and all data is stored locally on your device and never sent to any server.
+                Remember that if you clear your browser data your tasks may be lost.
+            </p>
+        </article>
+
+        <h3 id="task-heading">Your tasks for today</h3>
+
         <ul id="task-list"></ul>
 
         <template>
@@ -182,6 +206,10 @@
                 <button>Done</button>
             </li>
         </template>
+
+        <button id="show-about">
+            How does it work?
+        </button>
     </main>
 
     <footer>
