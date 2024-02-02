@@ -12,3 +12,7 @@ This service is entirely free and privacy centered. You don't even need an accou
 
 This tool does not save any of your data, and it has no backend.<br>
 All data is stored locally on your device using Local Storage.
+
+## Screenshot
+
+![Screenshot](https://github.com/caendesilva/day-planner/assets/95144705/77cdd895-4245-48c4-a55b-8e7e559da8f8)
